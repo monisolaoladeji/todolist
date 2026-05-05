@@ -3,20 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My To-Do App</title>
+    <title>Portfolio Todo App</title>
     <link rel="stylesheet" href="todostyle.css">
 </head>
 <body>
 
     <div class="container">
-        <h1>My To-Do List</h1>
+        <header>
+            <h1>Portfolio Toolkit</h1>
+            <p class="subtitle">Todo List · Calculator · Calendar</p>
+        </header>
 
-        <div class="input-section">
-            <input type="text" id="taskInput" placeholder="Enter a new task...">
-            <button onclick="addTask()">Add</button>
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="todo">📝 Todo</button>
+            <button class="tab-btn" data-tab="calculator">🧮 Calculator</button>
+            <button class="tab-btn" data-tab="calendar">📅 Calendar</button>
+            <button class="tab-btn" data-tab="about">👤 About</button>
+        </nav>
+
+        <div class="content">
+            <div id="todo" class="tab-content active">
+                <div class="input-section">
+                    <input type="text" id="taskInput" placeholder="Enter a new task...">
+                    <button onclick="addTask()">Add</button>
+                </div>
+                <ul id="taskList"></ul>
+            </div>
+
+            <div id="calculator" class="tab-content">
+                <div class="calculator">
+                    <div class="calc-display" id="calcDisplay">0</div>
+                    <div class="calc-buttons">
+                        <button class="calc-btn" onclick="clearCalc()">C</button>
+                        <button class="calc-btn" onclick="appendToCalc('(')">(</button>
+                        <button class="calc-btn" onclick="appendToCalc(')')">)</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('/')">÷</button>
+                        <button class="calc-btn" onclick="appendToCalc('7')">7</button>
+                        <button class="calc-btn" onclick="appendToCalc('8')">8</button>
+                        <button class="calc-btn" onclick="appendToCalc('9')">9</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('*')">×</button>
+                        <button class="calc-btn" onclick="appendToCalc('4')">4</button>
+                        <button class="calc-btn" onclick="appendToCalc('5')">5</button>
+                        <button class="calc-btn" onclick="appendToCalc('6')">6</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('-')">−</button>
+                        <button class="calc-btn" onclick="appendToCalc('1')">1</button>
+                        <button class="calc-btn" onclick="appendToCalc('2')">2</button>
+                        <button class="calc-btn" onclick="appendToCalc('3')">3</button>
+                        <button class="calc-btn operator" onclick="appendToCalc('+')">+</button>
+                        <button class="calc-btn" onclick="appendToCalc('0')">0</button>
+                        <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+                        <button class="calc-btn equals" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="calendar" class="tab-content">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button onclick="prevMonth()">&lt;</button>
+                        <h3 id="monthYear"></h3>
+                        <button onclick="nextMonth()">&gt;</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendarDays" class="calendar-days"></div>
+                </div>
+            </div>
+
+            <div id="about" class="tab-content">
+                <div class="about-section">
+                    <h2>About This Project</h2>
+                    <p>A comprehensive productivity toolkit built for my portfolio.</p>
+                    <div class="features-list">
+                        <div class="feature-card">
+                            <h3>📝 Nested Todo List</h3>
+                            <p>Organize tasks hierarchically with child numbering</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>🧮 Inline Calculator</h3>
+                            <p>No sideways scrolling - responsive display</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📅 Interactive Calendar</h3>
+                            <p>Navigate through months with ease</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📱 Fully Responsive</h3>
+                            <p>Works perfectly on mobile and desktop</p>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <h3>Tech Stack</h3>
+                        <p>HTML5 · CSS3 · Vanilla JavaScript</p>
+                    </div>
+                    <div class="data-privacy" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #28a745;">
+                        <h3 style="color: #28a745; margin-bottom: 8px;">🔒 Data Privacy Note</h3>
+                        <p style="color: #555; font-size: 14px;">Tasks are stored locally in your browser using <strong>localStorage</strong>. Testers will only see their own tasks, not yours! Each browser/user gets their own separate storage.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <ul id="taskList"></ul>
     </div>
 
     <script src="todojava.js"></script>
